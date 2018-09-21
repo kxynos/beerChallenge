@@ -1,5 +1,8 @@
+<<<<<<< HEAD
 config/env/local-production.js
 
+=======
+>>>>>>> 8af19a693b77a46f7270aac418fa685d3e06359c
 # Logs
 logs
 *.log
