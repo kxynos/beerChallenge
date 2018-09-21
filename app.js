@@ -38,9 +38,9 @@ MongoClient.connect('mongodb://wiesnUser77:aLrLFmZIWti7@ds163162.mlab.com:63162/
     app.service('beerChallenge').Model = client.db('wiesn-hackathon').collection('beerChallenge');
 
     // Now that we are connected, create a dummy Message
-     // app.service('beerChallange').create({
-     // text: 'test1'
-    //}).then(message => console.log('Created message', message));
+     // app.service('beerChallenge').create({
+    //  text: 'test1'
+   // }).then(message => console.log('Created message', message));
   }).catch(error => console.error(error));
 
 
