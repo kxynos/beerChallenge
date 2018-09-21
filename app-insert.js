@@ -20,7 +20,7 @@ app.configure(express.rest());
 app.configure(socketio());
 
 // Connect to the db, create and register a Feathers service.
-app.use('/beerChallsnge', service({
+app.use('/beerChallenge', service({
   paginate: {
     default: 2,
     max: 10
@@ -38,40 +38,14 @@ MongoClient.connect('mongodb://wiesnUser77:aLrLFmZIWti7@ds163162.mlab.com:63162/
     app.service('beerChallenge').Model = client.db('wiesn-hackathon').collection('beerChallenge');
 
     // Now that we are connected, create a dummy Message
-   //   app.service('beerChallange').create({
-   //   text: 'test1'
-   // }).then(message => console.log('Created message', message));
+      app.service('beerChallenge').create({
+      date: Date.now(),
+      latitude: "0.111222",
+      longitude: "0.111674313",
+      name: "Joe"
+    }).then(message => console.log('Created user', message));
   }).catch(error => console.error(error));
 
-
-app.service('beerChallenge').hooks({
-  before: {
-    find(context) {
-      const { query = {} } = context.params;
-
-      if(query._id) {
-        query._id  = new ObjectID(query._id);
-      }
-
-       if(query.date !== undefined) {
-        query.date = query.date ;
-      }
-      if(query.name !== undefined) {
-        query.name = query.name ;
-      }
-      if(query.latitude !== undefined) {
-        query.latitude = query.latitude ;
-      }
-      if(query.longitude !== undefined) {
-        query.longitude = query.longitude ;
-      }
-
-      context.params.query = query;
-
-      return Promise.resolve(context);
-    }
-  }
-});
 
 
 // Start the server.
