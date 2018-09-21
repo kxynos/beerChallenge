@@ -20,7 +20,7 @@ app.configure(express.rest());
 app.configure(socketio());
 
 // Connect to the db, create and register a Feathers service.
-app.use('/beerChallange', service({
+app.use('/beerChallenge', service({
   paginate: {
     default: 2,
     max: 10
@@ -35,7 +35,7 @@ app.use(express.errorHandler());
 MongoClient.connect('mongodb://wiesnUser77:aLrLFmZIWti7@ds163162.mlab.com:63162/wiesn-hackathon')
   .then(function(client){
     // Set the model now that we are connected
-    app.service('beerChallange').Model = client.db('wiesn-hackathon').collection('beerChallange');
+    app.service('beerChallenge').Model = client.db('wiesn-hackathon').collection('beerChallenge');
 
     // Now that we are connected, create a dummy Message
      // app.service('beerChallange').create({
@@ -45,7 +45,7 @@ MongoClient.connect('mongodb://wiesnUser77:aLrLFmZIWti7@ds163162.mlab.com:63162/
 
 
 
-app.service('beerChallange').hooks({
+app.service('beerChallenge').hooks({
   before: {
     find(context) {
       const { query = {} } = context.params;
