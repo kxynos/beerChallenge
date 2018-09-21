@@ -20,7 +20,7 @@ app.configure(express.rest());
 app.configure(socketio());
 
 // Connect to the db, create and register a Feathers service.
-app.use('/beerChallsnge', service({
+app.use('/beerChallenge', service({
   paginate: {
     default: 2,
     max: 10
