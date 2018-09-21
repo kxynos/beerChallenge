@@ -10,6 +10,7 @@ const ObjectID = require('mongodb').ObjectID;
 
 // Create an Express compatible Feathers application instance.
 const app = express(feathers());
+
 // Turn on JSON parser for REST services
 app.use(express.json());
 // Turn on URL-encoded parser for REST services
@@ -21,10 +22,8 @@ app.configure(socketio());
 
 // Connect to the db, create and register a Feathers service.
 app.use('/beerChallenge', service({
-  paginate: {
-    default: 2,
-    max: 10
-  }
+  paginate: false
+  
 }));
 
 
@@ -72,6 +71,8 @@ app.service('beerChallenge').hooks({
     }
   }
 });
+
+
 
 
 // Start the server.
