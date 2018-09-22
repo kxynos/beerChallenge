@@ -40,10 +40,26 @@ MongoClient.connect('mongodb://wiesnUser77:aLrLFmZIWti7@ds163162.mlab.com:63162/
     // Now that we are connected, create a dummy Message
       app.service('beerChallenge').create({
       date: Date.now(),
-      latitude: "0.111222",
-      longitude: "0.111674313",
-      name: "Joe"
+      name:"Mike",
+      daysPresent: 1
     }).then(message => console.log('Created user', message));
+
+            app.service('beerChallenge').create({
+      date: Date.now(),
+      name:"Averal",
+      daysPresent: 4
+    }).then(message => console.log('Created user', message));
+                  app.service('beerChallenge').create({
+      date: Date.now(),
+      name:"Can",
+      daysPresent: 11
+    }).then(message => console.log('Created user', message));
+                        app.service('beerChallenge').create({
+      date: Date.now(),
+      name:"Joe",
+      daysPresent: 8
+    }).then(message => console.log('Created user', message));
+
   }).catch(error => console.error(error));
 
 
