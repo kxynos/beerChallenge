@@ -58,11 +58,8 @@ app.service('beerChallenge').hooks({
       if(query.name !== undefined) {
         query.name = query.name ;
       }
-      if(query.latitude !== undefined) {
-        query.latitude = query.latitude ;
-      }
-      if(query.longitude !== undefined) {
-        query.longitude = query.longitude ;
+      if(query.daysPresent !== undefined) {
+        query.daysPresent = parseInt(query.daysPresent, 10) ;
       }
 
       context.params.query = query;
