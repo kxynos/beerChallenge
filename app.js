@@ -46,11 +46,11 @@ MongoClient.connect('mongodb://wiesnUser77:aLrLFmZIWti7@ds163162.mlab.com:63162/
 app.service('beerChallenge').hooks({
   before: {
     find(context) {
-      query: {
-    $sort: {
-      daysPresent: -1
-    }
-  }
+ //     query: {
+ //   $sort: {
+ //     daysPresent: -1
+ //   }
+ // }
       const { query = {} } = context.params;
 
       if(query._id) {
@@ -65,9 +65,17 @@ app.service('beerChallenge').hooks({
       }
       if(query.daysPresent !== undefined) {
         query.daysPresent = parseInt(query.daysPresent, 10) ;
+       // context.params.query.$sort.rank = parseInt(query.$sort.rank);
       }
 
+      if(!query.$sort) {
+      query.$sort = {
+        daysPresent: -1
+      }
+    }
+
       context.params.query = query;
+      //context.params.query = query.daysPresent.$sort.rank ;
 
       return Promise.resolve(context);
     }
