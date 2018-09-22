@@ -7,6 +7,10 @@ const service = require('feathers-mongodb');
 
 const ObjectID = require('mongodb').ObjectID;
 
+// get the mongodb config, use to avoid pushing to Github
+// add config directory to .gitignore
+const local_production = require('./config/env/local-production.js');
+//console.log('uri',local_production.MONGODB_URI);
 
 // Create an Express compatible Feathers application instance.
 const app = express(feathers());
@@ -31,7 +35,7 @@ app.use('/beerChallenge', service({
 app.use(express.errorHandler());
 
 // Connect to your MongoDB instance(s)
-MongoClient.connect('mongodb://wiesnUser77:aLrLFmZIWti7@ds163162.mlab.com:63162/wiesn-hackathon')
+MongoClient.connect(local_production.MONGODB_URI)
   .then(function(client){
     // Set the model now that we are connected
     app.service('beerChallenge').Model = client.db('wiesn-hackathon').collection('beerChallenge');
@@ -67,7 +71,7 @@ app.service('beerChallenge').hooks({
         query.daysPresent = parseInt(query.daysPresent, 10) ;
        // context.params.query.$sort.rank = parseInt(query.$sort.rank);
       }
-
+// sort results on daysPresent
       if(!query.$sort) {
       query.$sort = {
         daysPresent: -1
