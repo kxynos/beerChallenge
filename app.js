@@ -46,6 +46,11 @@ MongoClient.connect('mongodb://wiesnUser77:aLrLFmZIWti7@ds163162.mlab.com:63162/
 app.service('beerChallenge').hooks({
   before: {
     find(context) {
+      query: {
+    $sort: {
+      daysPresent: -1
+    }
+  }
       const { query = {} } = context.params;
 
       if(query._id) {
